@@ -214,7 +214,7 @@ async function submitHeroForm() {
   }
   btn.disabled = true; btn.textContent = 'Sending...';
   try {
-    const res = await fetch('https://www.solution360int.com/api/inquiry', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    const res = await fetch('/api/inquiry', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) });
     const result = await res.json();
     showMsg(msg, result.success ? 'success' : 'error', result.message);
     if (result.success) btn.textContent = '✓ Sent!';

@@ -3,8 +3,8 @@ const NAV_HTML = `
   <div class="topbar-inner">
     <span>Mon–Sat: 11:00 AM – 6:00 PM | Islamabad, Pakistan</span>
     <div class="top-links">
-      <a href="mailto:info@solutions360.com">✉ info@solutions360.com</a>
-      <a href="/whatsapp">📞 +92 344 533 0210</a>
+      <a href="mailto:solution360int@gmail.com">✉ solution360int@gmail.com</a>
+      <a href="/whatsapp">📞 +92 314 444 1280</a>
     </div>
   </div>
 </div>
@@ -60,8 +60,8 @@ const FOOTER_HTML = `
     </div>
     <div class="footer-col">
       <h5>Contact Us</h5>
-      <a href="tel:+923445330210">+92 344 533 0210</a>
-      <a href="mailto:info@solutions360.com">info@solutions360.com</a>
+      <a href="tel:+923144441280">+92 314 444 1280</a>
+      <a href="mailto:solution360int@gmail.com">solution360int@gmail.com</a>
       <a href="#">Islamabad, Pakistan</a>
       <a href="/whatsapp" class="wa-link">💬 Chat on WhatsApp</a>
     </div>

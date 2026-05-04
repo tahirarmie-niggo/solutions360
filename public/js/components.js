@@ -44,4 +44,28 @@ const FOOTER_HTML = `
       <h5>Quick Links</h5>
       <a href="/">Home</a>
       <a href="/about">About Us</a>
-      <a h
+      </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Solutions 360 © 2026. All rights reserved.</p>
+    <span class="footer-badge">TRUSTED CONSULTANTS</span>
+  </div>
+</footer>`;
+
+function injectLayout() {
+  document.getElementById('nav-placeholder').innerHTML = NAV_HTML;
+  document.getElementById('footer-placeholder').innerHTML = FOOTER_HTML;
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    if (a.getAttribute('href') === path) a.classList.add('active');
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  });
+}
+
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+document.addEventListener('DOMContentLoaded', injectLayout);

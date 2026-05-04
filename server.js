@@ -2,7 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const nodemailer = require('nodemailer');
 const path = require('path');
 
 const app = express();
@@ -22,18 +21,34 @@ const inquiryLimiter = rateLimit({
 });
 
 // Email transporter
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  },
-  tls: {
-    rejectUnauthorized: false
-  }
-});
+const https = require('https');
+
+async function sendEmail(to, subject, html) {
+  return new Promise((resolve, reject) => {
+    const data = JSON.stringify({
+      from: 'Solutions 360 <onboarding@resend.dev>',
+      to: [to],
+      subject: subject,
+      html: html
+    });
+    const options = {
+      hostname: 'api.resend.com',
+      path: '/emails',
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+        'Content-Length': data.length
+      }
+    };
+    const req = https.request(options, res => {
+      resolve(res.statusCode);
+    });
+    req.on('error', reject);
+    req.write(data);
+    req.end();
+  });
+}
 
 // Routes - serve HTML pages
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
@@ -106,18 +121,8 @@ app.post('/api/inquiry', inquiryLimiter, async (req, res) => {
 
   try {
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-      await transporter.sendMail({
-        from: `"Solutions 360" <${process.env.EMAIL_USER}>`,
-        to: process.env.EMAIL_TO || process.env.EMAIL_USER,
-        subject: `New Inquiry from ${name} — Solutions 360`,
-        html: adminHTML
-      });
-      await transporter.sendMail({
-        from: `"Solutions 360" <${process.env.EMAIL_USER}>`,
-        to: email,
-        subject: 'We received your inquiry — Solutions 360',
-        html: studentHTML
-      });
+await sendEmail(process.env.EMAIL_TO, `New Inquiry from ${name}`, adminHTML);
+await sendEmail(email, 'We received your inquiry — Solutions 360', studentHTML);
     }
     res.json({ success: true, message: 'Inquiry submitted successfully! We will contact you within 24 hours.' });
   } catch (err) {

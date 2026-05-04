@@ -4,7 +4,7 @@ const NAV_HTML = `
     <span>Mon–Sat: 11:00 AM – 6:00 PM | Islamabad, Pakistan</span>
     <div class="top-links">
       <a href="mailto:solution360int@gmail.com">✉ solution360int@gmail.com</a>
-      <a href="/whatsapp">📞 +92 344 533 0210</a>
+      <a href="/whatsapp">📞 +92 314 444 1280</a>
     </div>
   </div>
 </div>

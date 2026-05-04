@@ -39,7 +39,7 @@ const transporter = nodemailer.createTransport({
 app.use((req, res, next) => {
   const host = req.headers.host;
   if (host === 'solution360int.com') {
-    return res.redirect(301, 'https://www.yourdomain.com' + req.url);
+    return res.redirect(301, 'solution360int.com' + req.url);
   }
   next();
 });

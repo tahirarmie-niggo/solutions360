@@ -121,8 +121,8 @@ app.post('/api/inquiry', inquiryLimiter, async (req, res) => {
 
   try {
     if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-await sendEmail(process.env.EMAIL_TO, `New Inquiry from ${name}`, adminHTML);
-await sendEmail(email, 'We received your inquiry — Solutions 360', studentHTML);
+      await sendEmail(process.env.EMAIL_TO, `New Inquiry from ${name}`, adminHTML);
+      await sendEmail(email, 'We received your inquiry — Solutions 360', studentHTML);
     }
     res.json({ success: true, message: 'Inquiry submitted successfully! We will contact you within 24 hours.' });
   } catch (err) {

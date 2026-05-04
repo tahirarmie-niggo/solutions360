@@ -25,7 +25,7 @@ async function submitInquiry(fields, btnId, msgId) {
   }
   btn.disabled = true; btn.textContent = 'Sending...';
   try {
-    const res = await fetch('https://www.solution360int.com/api/inquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields) });
+    const res = await fetch('/api/inquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(fields) });
     const result = await res.json();
     showMsg(msg, result.success ? 'success' : 'error', result.message);
     if (result.success) { btn.textContent = '✓ Inquiry Sent!'; }

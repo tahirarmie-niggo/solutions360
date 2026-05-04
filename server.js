@@ -33,6 +33,13 @@ const transporter = nodemailer.createTransport({
 });
 
 // Routes - serve HTML pages
+app.use((req, res, next) => {
+  const host = req.headers.host;
+  if (host === 'solution360int.com') {
+    return res.redirect(301, 'https://www.yourdomain.com' + req.url);
+  }
+  next();
+});
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'public', 'about.html')));
 app.get('/countries', (req, res) => res.sendFile(path.join(__dirname, 'public', 'countries.html')));

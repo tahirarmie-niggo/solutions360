@@ -42,7 +42,7 @@ app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'public', 'c
 
 // WhatsApp redirect
 app.get('/whatsapp', (req, res) => {
-  const number = process.env.WHATSAPP_NUMBER || '923445330210';
+  const number = process.env.WHATSAPP_NUMBER || '923144441280';
   const msg = req.query.msg || 'Hello! I am interested in studying abroad and would like to know more about your services.';
   res.redirect(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`);
 });
@@ -80,7 +80,7 @@ app.post('/api/inquiry', inquiryLimiter, async (req, res) => {
         </table>
       </div>
       <div style="padding:16px 28px;background:#1b545d;text-align:center;">
-        <a href="https://wa.me/923445330210?text=Hi ${encodeURIComponent(name)}, thank you for your inquiry!" style="background:#c8a36f;color:#1b545d;padding:10px 24px;border-radius:6px;text-decoration:none;font-weight:600;font-size:13px;">Reply on WhatsApp</a>
+        <a href="https://wa.me/923144441280?text=Hi ${encodeURIComponent(name)}, thank you for your inquiry!" style="background:#c8a36f;color:#1b545d;padding:10px 24px;border-radius:6px;text-decoration:none;font-weight:600;font-size:13px;">Reply on WhatsApp</a>
       </div>
     </div>`;
 
@@ -95,9 +95,9 @@ app.post('/api/inquiry', inquiryLimiter, async (req, res) => {
         <p style="color:#5a7a7e;font-size:14px;line-height:1.8;">Thank you for reaching out to Solutions 360. Our team will review your details and get back to you within <strong>24 hours</strong>.</p>
         <p style="color:#5a7a7e;font-size:14px;line-height:1.8;">In the meantime, feel free to reach us directly on WhatsApp for a quicker response.</p>
         <div style="text-align:center;margin:28px 0;">
-          <a href="https://wa.me/923445330210" style="background:#1b545d;color:#c8a36f;padding:13px 28px;border-radius:6px;text-decoration:none;font-weight:600;font-size:14px;">Chat on WhatsApp</a>
+          <a href="https://wa.me/923144441280" style="background:#1b545d;color:#c8a36f;padding:13px 28px;border-radius:6px;text-decoration:none;font-weight:600;font-size:14px;">Chat on WhatsApp</a>
         </div>
-        <p style="color:#5a7a7e;font-size:13px;line-height:1.8;border-top:1px solid #e0d8cc;padding-top:16px;margin-top:8px;">📞 +92 344 533 0210 &nbsp;|&nbsp; 🕐 Mon–Sat 11AM–6PM</p>
+        <p style="color:#5a7a7e;font-size:13px;line-height:1.8;border-top:1px solid #e0d8cc;padding-top:16px;margin-top:8px;">📞 +92 314 444 1280 &nbsp;|&nbsp; 🕐 Mon–Sat 11AM–6PM</p>
       </div>
     </div>`;
 
